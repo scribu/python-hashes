@@ -7,7 +7,7 @@ so you can quickly find duplicates or cluster items.
 Part of python-hashes by sangelone. See README and LICENSE.
 """
 
-from hashtype import hashtype
+from hashes.hashtype import hashtype
 
 class simhash(hashtype):
     def create_hash(self, tokens):
@@ -24,7 +24,7 @@ class simhash(hashtype):
         v = [0]*self.hashbits    
         for t in [self._string_hash(x) for x in tokens]:
             bitmask = 0
-            for i in xrange(self.hashbits):
+            for i in range(self.hashbits):
                 bitmask = 1 << i
                 if t & bitmask:
                     v[i] += 1
@@ -32,7 +32,7 @@ class simhash(hashtype):
                     v[i] -= 1
 
         fingerprint = 0
-        for i in xrange(self.hashbits):
+        for i in range(self.hashbits):
             if v[i] >= 0:
                 fingerprint += 1 << i        
         self.hash = fingerprint

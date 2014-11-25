@@ -12,7 +12,7 @@ Related paper: http://spdp.dti.unimi.it/papers/pdcs04.pdf
 Part of python-hashes by sangelone. See README and LICENSE.
 """
 
-from hashtype import hashtype
+from hashes.hashtype import hashtype
 
 TRAN = [ord(x) for x in 
     "\x02\xD6\x9E\x6F\xF9\x1D\x04\xAB\xD0\x22\x16\x1F\xD8\x73\xA1\xAC"\
@@ -48,7 +48,7 @@ class nilsimsa(hashtype):
         """
         if type(data) != str:
             raise Exception('Nilsimsa hashes can only be created on strings')
-        self.hash = 0L
+        self.hash = 0
         self.add(data)
 
     def add(self, data):
@@ -99,7 +99,7 @@ class nilsimsa(hashtype):
         code = code[::-1]                   # reverse the byte order
 
         out = 0
-        for i in xrange(self.hashbits):     # turn bit list into real bits
+        for i in range(self.hashbits):     # turn bit list into real bits
             if code[i] :
                 out += 1 << i
 
